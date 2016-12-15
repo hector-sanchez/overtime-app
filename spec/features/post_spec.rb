@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 describe 'posts' do
+	before do 
+		user = User.create(email: 'test@test.com', password: 'asdfasdf', password_confirmation: 'asdfasdf', first_name: 'Jon', last_name: 'Snow')
+		login_as(user, :scope => :user)
+	end
+
 	describe 'index' do
 		before do 
 			visit posts_path
@@ -19,7 +24,7 @@ describe 'posts' do
 		before do
 			visit new_post_path
 		end
-		
+
 		it 'can reach the new post page' do
 			expect(page.status_code).to eq(200)
 		end
@@ -30,6 +35,14 @@ describe 'posts' do
 			click_on 'Save'
 
 			expect(page).to have_content('Some rationale')
+		end
+
+		it 'will have a user associated with it' do
+			fill_in 'post[date]', with: Date.today
+			fill_in 'post[rationale]', with: 'User_association'
+			click_on 'Save'
+
+			expect(User.last.posts.last.rationale).to eq('User_association')
 		end
 	end
 end
