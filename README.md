@@ -17,7 +17,7 @@
 ## UI: 
 - [x] Bootstrap -> formatting
 - Icons from FontAwesome
-- Update the style for forms
+- [x] Update the style for forms
 
 ## Refactor TODOS
 - [x] Refactor last name to add full name to post list
