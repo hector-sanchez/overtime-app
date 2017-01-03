@@ -63,14 +63,9 @@ describe 'posts' do
 
 	describe 'edit' do
 		before do
-			@post = FactoryGirl.create(:post)
-		end
-
-		it 'can be reached by clicking on the edit link' do
-			visit posts_path
-
-			click_link "edit_#{@post.id}"
-			expect(page.status_code).to eq(200)
+			@user = FactoryGirl.create(:user)
+			@post = FactoryGirl.create(:post, user: @user)
+			login_as(@user, :scope => :user)
 		end
 
 		it 'can be edited' do
@@ -81,6 +76,15 @@ describe 'posts' do
 			click_on 'Save'
 
 			expect(page).to have_content('Edited content')
+		end
+
+		it 'cannot be edited by a non authorized user' do
+			logout(:user)
+			non_authorized_user = FactoryGirl.create(:non_authorized_user)
+			login_as(non_authorized_user, :scope => :user)
+
+			visit edit_post_path(@post)
+			expect(current_path).to eq(root_path)
 		end
 	end
 
