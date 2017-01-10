@@ -21,6 +21,4 @@
 - [x] Update the style for forms
 
 ## Refactor TODOS
-- [x] Refactor last name to add full name to post list
-- Refactor user association integration test in post_spec
 - Refactor posts/_form for admin user with status
