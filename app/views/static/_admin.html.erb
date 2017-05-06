@@ -4,4 +4,12 @@
 		<hr>
 		<%= render partial: 'shared/pending_approval', locals: {pending_approval: @pending_approval} %>
 	</div>	
+	<div class='pending-homepage row'>
+		<h2>Confirmation Log</h2>
+		<hr>
+		<%= render partial: 'shared/confirmation_log', locals: {recent_audit_items: @recent_audit_items} %>
+		<div class="clearfix"></div>
+		<hr>
+		<%= link_to 'View all items', audit_logs_path, class: 'btn btn-primary' %>	
+	</div>
 </div>
