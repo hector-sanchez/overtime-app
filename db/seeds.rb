@@ -17,7 +17,7 @@ AdminUser.create(email: 'admin@test.com',
 puts "1 admin user created."
 
 100.times do |counter|
-	Post.create!(date: Date.today - (counter.days + 1), rationale: "#{counter + 1} - rationale content", user_id: @user.id, overtime_request: 2.5)
+	Post.create!(date: Date.today - (counter.days + 1), rationale: "If you've never used git before, first you need to set up your name and e-mail. Run the following commands to let git know your name and e-mail address.", user_id: @user.id, overtime_request: 2.5)
 end
 
 puts "100 posts have been created!"
