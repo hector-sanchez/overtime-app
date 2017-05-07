@@ -3,6 +3,10 @@ class AuditLogPolicy < ApplicationPolicy
 		return admin?
 	end
 
+	def confirm?
+		record.user.id == user.id
+	end
+
 	private
 
 	def admin?
