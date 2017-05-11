@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 ruby '2.2.5'
 
-gem 'rails', '4.2.6'
+gem 'rails', '~> 5.0', '>= 5.0.0.1'
 gem 'pg'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -29,7 +29,7 @@ gem 'kaminari', '~> 0.17'
 gem 'devise', '~> 4.2'
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
 gem 'gritter', '~> 1.2'
-gem "administrate", "~> 0.2.2"
+gem "administrate", github: "greetpoint/administrate", branch: "rails5"
 gem 'bourbon'
 gem 'pundit', '~> 1.1'
 gem 'puma', '~> 3.6', '>= 3.6.2'
