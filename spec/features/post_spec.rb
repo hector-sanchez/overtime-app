@@ -37,10 +37,13 @@ describe 'posts' do
 
 			expect(page).to_not have_content(/This post shouldn't be seen/)
 		end
-	end
+	 end
 
 	describe 'new' do
 		it 'has a link from the home page' do
+			employee = Employee.create(first_name: 'Employee', last_name: 'Authorized', email: 'employee@example.com', password: 'asdfasdf', password_confirmation: 'asdfasdf',
+										phone: '5555555555')
+			login_as(employee, :scope => :user)
 			visit root_path
 			click_link 'new_post_from_nav'
 			expect(page.status_code).to eq(200)
